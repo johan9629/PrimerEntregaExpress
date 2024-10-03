@@ -4,7 +4,7 @@ const router = Router();
 
 const products = [
     {
-        id: "1",
+        id: 1,
         title: "shampoo",
         descripcion: "shampoo cabello ondulado",
         codigo: "10001",
@@ -16,7 +16,7 @@ const products = [
         estatus: true,
     },
     {
-        id: "2",
+        id: 2,
         title: "crema",
         descripcion: "crema para la cara",
         codigo: "10002",
@@ -28,7 +28,7 @@ const products = [
         estatus: true,
     },
     {
-        id: "3",
+        id: 3,
         title: "cepillo",
         descripcion: "cepillo de dientes",
         codigo: "10003",
@@ -40,7 +40,7 @@ const products = [
         estatus: true,
     },
     {
-        id: "4",
+        id: 4,
         title: "pasta de dientes",
         descripcion: "pasta de dientes",
         codigo: "10004",
@@ -52,7 +52,7 @@ const products = [
         estatus: true,
     },
     {
-        id: "5",
+        id: 5,
         title: "jabon",
         descripcion: "jabon de baño",
         codigo: "10005",
@@ -64,7 +64,7 @@ const products = [
         estatus: true,
     },
     {
-        id: "6",
+        id: 6,
         title: "desodorante",
         descripcion: "desodorante en barra",
         codigo: "10006",
@@ -93,7 +93,7 @@ router.get("/", (req, res) => {
 
 router.get("/:pid", (req, res) => {
     const { pid } = req.params;
-    const producto = products.find(product => product.id === pid);
+    const producto = products.find(product => product.id === parseInt(pid));
     if (producto) {
         res.status(200).send({ producto, error: null })
     } else {
