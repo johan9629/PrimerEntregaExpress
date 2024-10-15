@@ -1,0 +1,50 @@
+<div>
+    <h2>Lista productos HOME</h2>
+    <ul id="lista">
+        {{#if products}}
+        {{#each products }}
+            <li id="item-lista" style="margin-top: 2rem; border: 1px solid #666; padding: 1rem; width: 460px">
+                    <p><b>ID:</b>  {{this.id}}</p>
+                    <p><b>TITLE:</b> {{this.title}}</p>
+                    <p><b>DESCRIPCION:</b> {{this.descripcion}}</p>
+                    <p><b>CODIGO:</b> {{this.codigo}}</p>
+                    <p><b>PRECIO:</b> {{this.precio}}</p>
+                    <p><b>STOCK:</b> {{this.stock}}</p>
+                    <p><b>CATEGORIA:</b> {{this.categoria}}</p>
+                    <p><b>THUMBNAIL:</b> {{this.thumbnail}}</p>
+            </li>
+        {{/each}}
+        {{else}}
+            {{#each respuesta }}
+            <li id="item-lista" style="margin-top: 2rem; border: 1px solid #666; padding: 1rem; width: 460px">
+                    <p><b>ID:</b>  {{this.id}}</p>
+                    <p><b>TITLE:</b> {{this.title}}</p>
+                    <p><b>DESCRIPCION:</b> {{this.descripcion}}</p>
+                    <p><b>CODIGO:</b> {{this.codigo}}</p>
+                    <p><b>PRECIO:</b> {{this.precio}}</p>
+                    <p><b>STOCK:</b> {{this.stock}}</p>
+                    <p><b>CATEGORIA:</b> {{this.categoria}}</p>
+                    <p><b>THUMBNAIL:</b> {{this.thumbnail}}</p>
+            </li>
+        {{/each}}
+        {{/if}}
+    </ul>
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+<script type="module">
+
+    //const productos = {{{ json products }}}
+    //console.log(productos);
+
+    const url = "";
+    const options = {};
+
+    const socketClient = io(url, options);
+
+    socketClient.on("connect", () => {
+        console.log(`Conectado al servidor de sockets.io ${url}`);
+    });
+
+
+</script>

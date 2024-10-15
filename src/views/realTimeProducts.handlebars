@@ -1,0 +1,94 @@
+<div>
+    <h2>Lista productos REAL TIME</h2>
+    <form action="">
+        <div class="div-form">
+            <label for="id">Id: </label>
+            <input type="text" id="id" name="id">
+        </div>
+        <div class="div-form">
+            <label for="id">Title: </label>
+            <input type="text" id="title" name="title">
+        </div>
+        <div class="div-form">
+            <label for="id">Descripcion: </label>
+            <input type="text" id="descripcion" name="descripcion">
+        </div>
+        <div class="div-form">
+            <label for="id">Codigo: </label>
+            <input type="text" id="codigo" name="codigo">
+        </div>
+        <div class="div-form">
+            <label for="id">Precio: </label>
+            <input type="text" id="precio" name="precio">
+        </div>
+        <div class="div-form">
+            <label for="id">Stock: </label>
+            <input type="text" id="stock" name="stock">
+        </div>
+        <div class="div-form">
+            <label for="id">Categoria: </label>
+            <input type="text" id="categoria" name="categoria">
+        </div>
+        <div class="div-form">
+            <label for="id">Thumnail: </label>
+            <input type="text" id="thumnail" name="thumnail">
+        </div>
+        <button id="btn" type="submit">Agregar</button>
+    </form>
+
+    <ul id="lista">
+        {{#if products}}
+        {{#each products }}
+            <li id="item-lista" style="margin-top: 2rem; border: 1px solid #666; padding: 1rem; width: 460px">
+                    <p><b>ID:</b>  {{this.id}}</p>
+                    <p><b>TITLE:</b> {{this.title}}</p>
+                    <p><b>DESCRIPCION:</b> {{this.descripcion}}</p>
+                    <p><b>CODIGO:</b> {{this.codigo}}</p>
+                    <p><b>PRECIO:</b> {{this.precio}}</p>
+                    <p><b>STOCK:</b> {{this.stock}}</p>
+                    <p><b>CATEGORIA:</b> {{this.categoria}}</p>
+                    <p><b>THUMBNAIL:</b> {{this.thumbnail}}</p>
+            </li>
+        {{/each}}
+        {{else}}
+            {{#each respuesta }}
+            <li id="item-lista" style="margin-top: 2rem; border: 1px solid #666; padding: 1rem; width: 460px">
+                    <p><b>ID:</b>  {{this.id}}</p>
+                    <p><b>TITLE:</b> {{this.title}}</p>
+                    <p><b>DESCRIPCION:</b> {{this.descripcion}}</p>
+                    <p><b>CODIGO:</b> {{this.codigo}}</p>
+                    <p><b>PRECIO:</b> {{this.precio}}</p>
+                    <p><b>STOCK:</b> {{this.stock}}</p>
+                    <p><b>CATEGORIA:</b> {{this.categoria}}</p>
+                    <p><b>THUMBNAIL:</b> {{this.thumbnail}}</p>
+            </li>
+        {{/each}}
+        {{/if}}
+    </ul>
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+<script type="module">
+
+    const productos = {{{ json products }}}
+    console.log(productos);
+
+    const button = document.getElementById("btn");
+    button.addEventListener("click", e => {
+        
+    });
+
+    const url = "";
+    const options = {};
+
+    const socketClient = io(url, options);
+
+    socketClient.on("connect", () => {
+        console.log(`Conectado al servidor de sockets.io ${url}`);
+    });
+
+    socketClient.on("current_products", data => {
+        
+    });
+
+</script>

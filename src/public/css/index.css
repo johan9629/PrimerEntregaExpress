@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff ;
+}
+
+p {
+    margin-bottom: 0.25rem;
+}
+
+input {
+    color: #000;
+}
+
+.div-form {
+    padding: 0.3125rem;
+    margin: 0.3125rem;
+    border: #fff solid 1px;
+    width: 20rem;
+    & label {
+        width: 6rem;
+    }
+}
+
+button {
+    color: #000;
+    margin: 0.3125rem;
+    padding: 0.3125rem 1rem;
+}

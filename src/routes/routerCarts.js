@@ -2,6 +2,8 @@ import { Router } from "express";
 
 const router = Router();
 
+
+
 const carts = [
     {
         id: 1,
@@ -24,6 +26,7 @@ const carts = [
 ];
 
 router.get('/' , (req, res) => {
+    //res.status(200).render('home', { data: carts, error: null });
     res.status(200).send({ data: carts, error: null });
 });
 

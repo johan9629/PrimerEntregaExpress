@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router} from 'express';
 
 const router = Router();
 
@@ -85,19 +85,9 @@ router.get("/", (req, res) => {
         for (let i = 0; i < Object.values(consultas); i++) {
             respuesta.push(products[i]);
         }
-        res.status(200).send({ respuesta, error: null })
+        res.status(200).render('home', { respuesta });
     } else {
-        res.status(200).send({ products, error: null })
-    }
-});
-
-router.get("/:pid", (req, res) => {
-    const { pid } = req.params;
-    const producto = products.find(product => product.id === parseInt(pid));
-    if (producto) {
-        res.status(200).send({ producto, error: null })
-    } else {
-        res.status(404).send({ producto: null, error: "producto no encontrado" })
+        res.status(200).render('home', { products });
     }
 });
 
@@ -122,32 +112,6 @@ router.post("/", (req, res) => {
         res.status(201).send({ data: producto, error: null });
     } else {
         res.status(400).send({ error: "debe enviarse todos los campos", data: [] })
-    }
-});
-
-router.put("/:pid", (req, res) => {
-    const { pid } = req.params;
-    const { body } = req;
-    const producto = products.find( product => product.id === parseInt(pid));
-    if(producto) {
-        const index = products.indexOf(producto);
-        console.log(index);
-        products[index] = {...producto, ...body};
-        res.status(200).send({ data: products[index], error: null });
-    } else {
-        res.status(400).send({ data: null, error: "producto no encontrado" });
-    }
-});
-
-router.delete("/:pid", (req, res) => {
-    const { pid } = req.params;
-    const producto = products.find( product => product.id === parseInt(pid));
-    if(producto) {
-        const index = products.indexOf(producto);
-        products.splice(index, 1);
-        res.status(200).send({ data: producto, error: null });
-    } else {
-        res.status(400).send({ data: null, error: "producto no encontrado" });
     }
 });
 
